@@ -13,12 +13,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(bindingClass.root)
 
         bindingClass.CalculationsButton.setOnClickListener {
-            val nominal = bindingClass.NominalPrice.text.toString().toFloat()
-            val couponSize = bindingClass.CouponSize.text.toString().toFloat()
-            val paymentsAtYear = bindingClass.PaymentsAtYear.text.toString().toFloat()
-            val allPayments = bindingClass.AllPayments.text.toString().toFloat()
-            val cleanPrice = bindingClass.CleanPrice.text.toString().toFloat()
-            val nKD = bindingClass.NKD.text.toString().toFloat()
+            val nominal = ConvertToFloat(bindingClass.NominalPrice.text.toString())
+            bindingClass.NominalPrice.setText(nominal.toString())
+            val couponSize = ConvertToFloat(bindingClass.CouponSize.text.toString())
+            bindingClass.CouponSize.setText(couponSize.toString())
+            val paymentsAtYear = ConvertToFloat(bindingClass.PaymentsAtYear.text.toString())
+            val allPayments = ConvertToFloat(bindingClass.AllPayments.text.toString())
+            val cleanPrice = ConvertToFloat(bindingClass.CleanPrice.text.toString())
+            val nKD = ConvertToFloat(bindingClass.NKD.text.toString())
 
             bindingClass.DirtyPrice.text = "${DirtyPriseCalc(cleanPrice, nKD)} р"
             bindingClass.CouponIncome.text = "${CouponInkomeCalc(paymentsAtYear, couponSize, nominal)} %"
@@ -26,14 +28,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-fun TryIntValue(num : String) : Int{
-    val defaultReturn = 0
-    return try{
-        num.toInt()
-    } catch (e: NumberFormatException) {
-        defaultReturn
+fun ConvertToFloat(stringDigit : String) : Float{
+    if(stringDigit.toFloatOrNull() == null){
+        return 0f
     }
+    else return stringDigit.toString().toFloat()
 }
 
 fun DirtyPriseCalc(cleanPrice : Float, nkd : Float) : Float{

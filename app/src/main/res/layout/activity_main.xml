@@ -295,7 +295,7 @@
                     android:layout_marginTop="16dp"
                     android:ems="10"
                     android:hint="Номинал"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:textColorHint="?android:attr/textColorHint"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="parent"
