@@ -6,33 +6,50 @@ import com.example.securitiesapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     lateinit var bindingClass: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val myError : String = "Ошибка!"
+
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
 
         bindingClass.CalculationsButton.setOnClickListener {
-            val nominal = ConvertToFloat(bindingClass.NominalPrice.text.toString())
-            bindingClass.NominalPrice.setText(nominal.toString())
-            val couponSize = ConvertToFloat(bindingClass.CouponSize.text.toString())
-            bindingClass.CouponSize.setText(couponSize.toString())
-            val paymentsAtYear = ConvertToFloat(bindingClass.PaymentsAtYear.text.toString())
-            val allPayments = ConvertToFloat(bindingClass.AllPayments.text.toString())
-            val cleanPrice = ConvertToFloat(bindingClass.CleanPrice.text.toString())
-            val nKD = ConvertToFloat(bindingClass.NKD.text.toString())
+            var nominal : String = GetNormalString(bindingClass.NominalPrice.text.toString(), myError)
+            bindingClass.NominalPrice.setText(nominal) //установка значения nominal в поле ввода
+//!!!!!!!
 
-            bindingClass.DirtyPrice.text = "${DirtyPriseCalc(cleanPrice, nKD)} р"
-            bindingClass.CouponIncome.text = "${CouponInkomeCalc(paymentsAtYear, couponSize, nominal)} %"
-            bindingClass.CurrentIncome.text = "${CurrentIncomeCalc(paymentsAtYear, couponSize, cleanPrice)} %"
+            val couponSize = GetNormalString(bindingClass.CouponSize.text.toString(),myError)
+            bindingClass.CouponSize.setText(couponSize.toString())
+            val paymentsAtYear = GetNormalString(bindingClass.PaymentsAtYear.text.toString(), myError)
+            val allPayments = GetNormalString(bindingClass.AllPayments.text.toString(), myError)
+            val cleanPrice = GetNormalString(bindingClass.CleanPrice.text.toString(), myError)
+            val nKD = GetNormalString(bindingClass.NKD.text.toString(), myError)
+
+            //установка значений в нижие поля
+            bindingClass.DirtyPrice.text = "${DirtyPriseCalc(cleanPrice.toFloat(), nKD.toFloat())} р"
+
+            bindingClass.CouponIncome.text = PasteMeaning(nominal, CouponInkomeCalc(paymentsAtYear.toFloat(), couponSize.toFloat(), nominal.toFloat()), myError)
+
+            bindingClass.CurrentIncome.text = PasteMeaning(couponSize, CurrentIncomeCalc(paymentsAtYear.toFloat(), couponSize.toFloat(), cleanPrice.toFloat()), myError)
+
         }
     }
 }
-fun ConvertToFloat(stringDigit : String) : Float{
-    if(stringDigit.toFloatOrNull() == null){
-        return 0f
+
+fun PasteMeaning (tryToFloatString : String, result : Float, errorTxt : String) : String{
+    if (tryToFloatString.toFloatOrNull() != null){
+        return result.toString()
+    } else {
+        return errorTxt
     }
-    else return stringDigit.toString().toFloat()
+}
+
+fun GetNormalString(neededString: String, errorTxt : String ) : String{
+    if(neededString.toFloatOrNull() == null){
+        return errorTxt
+    } else {
+        return neededString
+    }
 }
 
 fun DirtyPriseCalc(cleanPrice : Float, nkd : Float) : Float{
@@ -40,7 +57,11 @@ fun DirtyPriseCalc(cleanPrice : Float, nkd : Float) : Float{
 }
 
 fun CouponInkomeCalc(paymentsAtYear : Float, couponSize : Float, nominal : Float) : Float{
-    return ((paymentsAtYear*couponSize)/nominal) * 100
+    if (!nominal.isNaN()){
+        return ((paymentsAtYear*couponSize)/nominal) * 100
+    } else {
+        return 0f
+    }
 }
 
 fun CurrentIncomeCalc(paymentsAtYear : Float, couponSize : Float, cleanPrice: Float) : Float{
