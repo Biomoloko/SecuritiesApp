@@ -15,18 +15,25 @@ class MainActivity : AppCompatActivity() {
 
         bindingClass.CalculationsButton.setOnClickListener {
             var nominal : String = GetNormalString(bindingClass.NominalPrice.text.toString(), myError)
-            bindingClass.NominalPrice.setText(nominal) //установка значения nominal в поле ввода
-//!!!!!!!
+            bindingClass.NominalPrice.setText(nominal)
 
             val couponSize = GetNormalString(bindingClass.CouponSize.text.toString(),myError)
-            bindingClass.CouponSize.setText(couponSize.toString())
+            bindingClass.CouponSize.setText(couponSize)
+
             val paymentsAtYear = GetNormalString(bindingClass.PaymentsAtYear.text.toString(), myError)
+            bindingClass.PaymentsAtYear.setText(paymentsAtYear)
+
             val allPayments = GetNormalString(bindingClass.AllPayments.text.toString(), myError)
+            bindingClass.AllPayments.setText(allPayments)
+
             val cleanPrice = GetNormalString(bindingClass.CleanPrice.text.toString(), myError)
+            bindingClass.CleanPrice.setText(cleanPrice)
+
             val nKD = GetNormalString(bindingClass.NKD.text.toString(), myError)
+            bindingClass.NKD.setText(nKD)
 
             //установка значений в нижие поля
-            bindingClass.DirtyPrice.text = "${DirtyPriseCalc(cleanPrice.toFloat(), nKD.toFloat())} р"
+            bindingClass.DirtyPrice.text = PasteMeaning((dir))
 
             bindingClass.CouponIncome.text = PasteMeaning(nominal, CouponInkomeCalc(paymentsAtYear.toFloat(), couponSize.toFloat(), nominal.toFloat()), myError)
 
