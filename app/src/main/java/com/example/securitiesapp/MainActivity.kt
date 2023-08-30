@@ -1,8 +1,10 @@
 package com.example.securitiesapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.securitiesapp.databinding.ActivityMainBinding
+import java.text.SimpleDateFormat
 
 class MainActivity : AppCompatActivity() {
     lateinit var bindingClass: ActivityMainBinding
@@ -14,64 +16,63 @@ class MainActivity : AppCompatActivity() {
         setContentView(bindingClass.root)
 
         bindingClass.CalculationsButton.setOnClickListener {
-            var nominal : String = GetNormalString(bindingClass.NominalPrice.text.toString(), myError)
-            bindingClass.NominalPrice.setText(nominal) //установка значения nominal в поле ввода
-//!!!!!!!
+            val myGreenColor = Color.argb(250, 15,120,0)
+            val myRedColor = Color.argb(250, 190,0,0)
+            val fmt = SimpleDateFormat("dd.MM.yyyy HH:mm")
+//            val formatted: String = ftm.format(someDate)
 
-            val couponSize = GetNormalString(bindingClass.CouponSize.text.toString(),myError)
-            bindingClass.CouponSize.setText(couponSize.toString())
-            val paymentsAtYear = GetNormalString(bindingClass.PaymentsAtYear.text.toString(), myError)
-            val allPayments = GetNormalString(bindingClass.AllPayments.text.toString(), myError)
-            val cleanPrice = GetNormalString(bindingClass.CleanPrice.text.toString(), myError)
-            val nKD = GetNormalString(bindingClass.NKD.text.toString(), myError)
+            var nominal : Float = ProjectFunctions.GetParseFloat(bindingClass.NominalPrice.text.toString(), myError) // ошибка или число
+            bindingClass.NominalPrice.setText(ProjectFunctions.TextInUpField(nominal))
+//            bindingClass.NominalPrice.textAlignment = View.TEXT_ALIGNMENT_CENTER
+//
+//            if(nominal == 0f) bindingClass.NominalPrice.setTextColor(myRedColor)
+//            else bindingClass.NominalPrice.setTextColor(myGreenColor)
 
-            //установка значений в нижие поля
-            bindingClass.DirtyPrice.text = "${DirtyPriseCalc(cleanPrice.toFloat(), nKD.toFloat())} р"
+            val couponSize = ProjectFunctions.GetParseFloat(bindingClass.CouponSize.text.toString(),myError)
+            bindingClass.CouponSize.setText(ProjectFunctions.TextInUpField(couponSize))
 
-            bindingClass.CouponIncome.text = PasteMeaning(nominal, CouponInkomeCalc(paymentsAtYear.toFloat(), couponSize.toFloat(), nominal.toFloat()), myError)
+            val paymentsAtYear = ProjectFunctions.GetParseFloat(bindingClass.PaymentsAtYear.text.toString(), myError)
+            bindingClass.PaymentsAtYear.setText(ProjectFunctions.TextInUpField(paymentsAtYear))
 
-            bindingClass.CurrentIncome.text = PasteMeaning(couponSize, CurrentIncomeCalc(paymentsAtYear.toFloat(), couponSize.toFloat(), cleanPrice.toFloat()), myError)
+
+            val allPayments = ProjectFunctions.GetParseFloat(bindingClass.AllPayments.text.toString(), myError)
+            bindingClass.AllPayments.setText(ProjectFunctions.TextInUpField(allPayments))
+
+
+            val cleanPrice = ProjectFunctions.GetParseFloat(bindingClass.CleanPrice.text.toString(), myError)
+            bindingClass.CleanPrice.setText(ProjectFunctions.TextInUpField(cleanPrice))
+
+
+
+            val nKD = ProjectFunctions.GetParseFloat(bindingClass.NKD.text.toString(), myError)
+            bindingClass.NKD.setText(nKD.toString())
+
+            //установка значений в нижние поля
+            bindingClass.DirtyPrice.text = ProjectFunctions.DirtyPriceCalc(cleanPrice, nKD).toString()
+
+            bindingClass.CouponIncome.text = ProjectFunctions.CouponInkomeCalc(paymentsAtYear, couponSize, nominal).toString()
+
+            bindingClass.CurrentIncome.text = ProjectFunctions.CurrentIncomeCalc(paymentsAtYear, couponSize, cleanPrice).toString()
+
+        }
+        bindingClass.ResetButton.setOnClickListener(){
+            bindingClass.NominalPrice.text.clear()
+            bindingClass.CouponSize.text.clear()
+            bindingClass.PaymentsAtYear.text.clear()
+            bindingClass.AllPayments.text.clear()
+            bindingClass.CleanPrice.text.clear()
+            bindingClass.NKD.text.clear()
+
+            bindingClass.DirtyPrice.text = "________"
+            bindingClass.CouponIncome.text = "________"
+            bindingClass.CurrentIncome.text = "________"
+            bindingClass.SimpleIncome.text = "________"
+            bindingClass.TaxIncome.text = "________"
 
         }
     }
 }
 
-fun PasteMeaning (tryToFloatString : String, result : Float, errorTxt : String) : String{
-    if (tryToFloatString.toFloatOrNull() != null){
-        return result.toString()
-    } else {
-        return errorTxt
-    }
-}
 
-fun GetNormalString(neededString: String, errorTxt : String ) : String{
-    if(neededString.toFloatOrNull() == null){
-        return errorTxt
-    } else {
-        return neededString
-    }
-}
 
-fun DirtyPriseCalc(cleanPrice : Float, nkd : Float) : Float{
-    return cleanPrice + nkd
-}
 
-fun CouponInkomeCalc(paymentsAtYear : Float, couponSize : Float, nominal : Float) : Float{
-    if (!nominal.isNaN()){
-        return ((paymentsAtYear*couponSize)/nominal) * 100
-    } else {
-        return 0f
-    }
-}
-
-fun CurrentIncomeCalc(paymentsAtYear : Float, couponSize : Float, cleanPrice: Float) : Float{
-    return ((paymentsAtYear*couponSize)/cleanPrice) * 100
-}
-
-fun SimpleIncomeCalc(dirtyPrice : Float, daysUntil : Float, couponSize : Float ,nominal : Float, allPayments : Float) : Float{
-    return ((nominal - dirtyPrice + (couponSize * allPayments))/dirtyPrice) * (365/daysUntil) * 100
-}
-
-fun TaxIncomeCalc(dirtyPrice : Float, daysUntil : Float, couponSize : Float, nominal : Float, allPayments : Float) : Float {
-    return (((nominal - dirtyPrice + allPayments * couponSize) * 0.87f) / dirtyPrice) * (365 / daysUntil) * 100
-}

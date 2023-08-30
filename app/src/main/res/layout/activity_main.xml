@@ -22,7 +22,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1303dp"
+                android:layout_height="1402dp"
                 android:background="#81FFFFFF"
                 tools:context=".MainActivity">
 
@@ -121,7 +121,7 @@
                     android:id="@+id/DirtyPriceLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="144dp"
+                    android:layout_marginTop="200dp"
                     android:text="Грязная цена покупки"
                     android:textAlignment="center"
                     android:textSize="20sp"
@@ -134,6 +134,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif"
                     android:text="________"
                     android:textAlignment="center"
                     android:textSize="24sp"
@@ -149,6 +150,8 @@
                     android:ems="10"
                     android:hint="ДД.ММ.ГГГГ"
                     android:inputType="datetime|date"
+                    android:maxLength="10"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/StartDate"
                     app:layout_constraintEnd_toEndOf="@+id/editTextText10"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -162,7 +165,7 @@
                     android:ems="10"
                     android:hint="Чистая цена покупки"
                     android:inputType="phone"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/AllPayments"
                     app:layout_constraintStart_toStartOf="@+id/AllPayments"
                     app:layout_constraintTop_toBottomOf="@+id/AllPayments" />
@@ -174,7 +177,7 @@
                     android:ems="10"
                     android:hint="НКД"
                     android:inputType="phone"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/CleanPrice"
                     app:layout_constraintStart_toStartOf="@+id/CleanPrice"
                     app:layout_constraintTop_toBottomOf="@+id/CleanPrice" />
@@ -186,7 +189,7 @@
                     android:ems="10"
                     android:hint="Количество выплат в год"
                     android:inputType="phone"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/CouponSize"
                     app:layout_constraintStart_toStartOf="@+id/CouponSize"
                     app:layout_constraintTop_toBottomOf="@+id/CouponSize" />
@@ -198,7 +201,7 @@
                     android:ems="10"
                     android:hint="Всего выплат до погашения"
                     android:inputType="phone"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/PaymentsAtYear"
                     app:layout_constraintStart_toStartOf="@+id/PaymentsAtYear"
                     app:layout_constraintTop_toBottomOf="@+id/PaymentsAtYear" />
@@ -213,7 +216,7 @@
                     android:ems="10"
                     android:hint="Размер купона (ср.размер купона) р."
                     android:inputType="phone"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/CalculatedSellTime" />
@@ -229,7 +232,7 @@
                     android:hint="Дней до погашения"
                     android:inputType="none"
                     android:textAlignment="center"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/StartDate" />
@@ -297,7 +300,7 @@
                     android:hint="Номинал"
                     android:inputType="phone"
                     android:textColorHint="?android:attr/textColorHint"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/OrgName" />
@@ -345,6 +348,8 @@
                     android:ems="10"
                     android:hint="ДД.ММ.ГГГГ"
                     android:inputType="datetime"
+                    android:maxLength="10"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/OrgName"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/OrgName"
@@ -355,13 +360,14 @@
                     style="@style/Widget.Material3.Button"
                     android:layout_width="258dp"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#3E9500"
+                    android:backgroundTint="#4CAF50"
                     android:backgroundTintMode="src_over"
                     android:text="Рассчитать"
                     app:layout_constraintBottom_toTopOf="@+id/DirtyPriceLabel"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/NKD"
+                    app:layout_constraintVertical_bias="0.22000003"
                     app:strokeColor="#000000" />
 
                 <TextView
@@ -375,6 +381,21 @@
                     app:layout_constraintEnd_toEndOf="@+id/DirtyPrice"
                     app:layout_constraintStart_toStartOf="@+id/DirtyPrice"
                     app:layout_constraintTop_toBottomOf="@+id/DirtyPrice" />
+
+                <Button
+                    android:id="@+id/ResetButton"
+                    style="@style/Widget.Material3.Button"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:backgroundTint="#BF4343"
+                    android:backgroundTintMode="src_over"
+                    android:text="Сброс"
+                    app:layout_constraintBottom_toTopOf="@+id/DirtyPriceLabel"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/CalculationsButton"
+                    app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
