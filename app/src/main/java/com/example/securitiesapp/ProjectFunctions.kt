@@ -1,6 +1,8 @@
 package com.example.securitiesapp
 
+import android.app.DatePickerDialog
 import android.graphics.Color
+import android.widget.DatePicker
 import com.example.securitiesapp.databinding.ActivityMainBinding
 
 object ProjectFunctions {
@@ -45,4 +47,5 @@ object ProjectFunctions {
     fun TaxIncomeCalc(dirtyPrice : Float, daysUntil : Float, couponSize : Float, nominal : Float, allPayments : Float) : Float {
         return (((nominal - dirtyPrice + allPayments * couponSize) * 0.87f) / dirtyPrice) * (365 / daysUntil) * 100
     }
+
 }

@@ -1,13 +1,15 @@
 package com.example.securitiesapp
 
+import android.app.DatePickerDialog
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
 import androidx.appcompat.app.AppCompatActivity
 import com.example.securitiesapp.databinding.ActivityMainBinding
-import java.text.SimpleDateFormat
 
 class MainActivity : AppCompatActivity() {
     lateinit var bindingClass: ActivityMainBinding
+    private lateinit var datePickerDialog : DatePickerDialog
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val myError : String = "Ошибка!"
@@ -15,18 +17,15 @@ class MainActivity : AppCompatActivity() {
         bindingClass = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bindingClass.root)
 
+
+        //Calculations Button
         bindingClass.CalculationsButton.setOnClickListener {
             val myGreenColor = Color.argb(250, 15,120,0)
             val myRedColor = Color.argb(250, 190,0,0)
-            val fmt = SimpleDateFormat("dd.MM.yyyy HH:mm")
-//            val formatted: String = ftm.format(someDate)
 
             var nominal : Float = ProjectFunctions.GetParseFloat(bindingClass.NominalPrice.text.toString(), myError) // ошибка или число
             bindingClass.NominalPrice.setText(ProjectFunctions.TextInUpField(nominal))
-//            bindingClass.NominalPrice.textAlignment = View.TEXT_ALIGNMENT_CENTER
-//
-//            if(nominal == 0f) bindingClass.NominalPrice.setTextColor(myRedColor)
-//            else bindingClass.NominalPrice.setTextColor(myGreenColor)
+
 
             val couponSize = ProjectFunctions.GetParseFloat(bindingClass.CouponSize.text.toString(),myError)
             bindingClass.CouponSize.setText(ProjectFunctions.TextInUpField(couponSize))
@@ -55,6 +54,8 @@ class MainActivity : AppCompatActivity() {
             bindingClass.CurrentIncome.text = ProjectFunctions.CurrentIncomeCalc(paymentsAtYear, couponSize, cleanPrice).toString()
 
         }
+
+        //Reset Button
         bindingClass.ResetButton.setOnClickListener(){
             bindingClass.NominalPrice.text.clear()
             bindingClass.CouponSize.text.clear()
@@ -68,7 +69,6 @@ class MainActivity : AppCompatActivity() {
             bindingClass.CurrentIncome.text = "________"
             bindingClass.SimpleIncome.text = "________"
             bindingClass.TaxIncome.text = "________"
-
         }
     }
 }

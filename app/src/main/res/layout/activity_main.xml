@@ -144,21 +144,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/DirtyPriceLabel" />
 
                 <EditText
-                    android:id="@+id/EndDate"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:ems="10"
-                    android:hint="ДД.ММ.ГГГГ"
-                    android:inputType="datetime|date"
-                    android:maxLength="10"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/StartDate"
-                    app:layout_constraintEnd_toEndOf="@+id/editTextText10"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/editTextText10"
-                    app:layout_constraintTop_toTopOf="@+id/StartDate" />
-
-                <EditText
                     android:id="@+id/CleanPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -226,6 +211,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
+                    android:layout_marginTop="1dp"
                     android:layout_marginEnd="32dp"
                     android:editable="false"
                     android:ems="10"
@@ -235,7 +221,7 @@
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/StartDate" />
+                    app:layout_constraintTop_toBottomOf="@+id/StartDateButton" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
@@ -339,22 +325,6 @@
                     app:layout_constraintTop_toTopOf="@+id/OrgName"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <EditText
-                    android:id="@+id/StartDate"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:ems="10"
-                    android:hint="ДД.ММ.ГГГГ"
-                    android:inputType="datetime"
-                    android:maxLength="10"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@+id/OrgName"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/OrgName"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
                 <Button
                     android:id="@+id/CalculationsButton"
                     style="@style/Widget.Material3.Button"
@@ -396,6 +366,39 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/CalculationsButton"
                     app:layout_constraintVertical_bias="0.0" />
+
+                <Button
+                    android:id="@+id/StartDateButton"
+                    style="?spinnerStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="#0E0101"
+                    android:text="ДД.ММ.ГГ"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/OrgName"
+                    app:layout_constraintStart_toStartOf="@+id/OrgName"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7"
+                    app:rippleColor="#150B0B"
+                    tools:visibility="visible" />
+
+                <Button
+                    android:id="@+id/EndDateButton"
+                    style="?spinnerStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#0E0101"
+                    android:text="ДД.ММ.ГГ"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/editTextText10"
+                    app:layout_constraintStart_toStartOf="@+id/editTextText10"
+                    app:layout_constraintTop_toTopOf="@+id/StartDateButton"
+                    app:rippleColor="#150B0B"
+                    tools:visibility="visible" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
