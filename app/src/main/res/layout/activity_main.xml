@@ -23,9 +23,66 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1287dp"
+                android:layout_height="779dp"
                 android:background="#81FFFFFF"
                 tools:context=".MainActivity">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="Чистая цена покупки %"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/CleanPrice"
+                    app:layout_constraintEnd_toEndOf="@+id/textView4"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toTopOf="@+id/CleanPrice" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="НКД"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/NKD"
+                    app:layout_constraintEnd_toEndOf="@+id/textView5"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView5"
+                    app:layout_constraintTop_toBottomOf="@+id/CleanPrice" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="Всего выплат до погашения"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/AllPayments"
+                    app:layout_constraintEnd_toEndOf="@+id/textView2"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView2"
+                    app:layout_constraintTop_toTopOf="@+id/AllPayments"
+                    app:layout_constraintVertical_bias="0.333" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="Количество выплат в год"
+                    android:textAlignment="textStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/PaymentsAtYear"
+                    app:layout_constraintEnd_toEndOf="@+id/textView"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/textView"
+                    app:layout_constraintTop_toTopOf="@+id/PaymentsAtYear" />
 
                 <TextView
                     android:id="@+id/TaxIncomeLabel"
@@ -33,25 +90,25 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="Налоговая доходность к погашению, %/год."
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/SimpleIncome"
+                    android:textAlignment="textStart"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/SimpleIncomeLabel"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/SimpleIncome"
+                    app:layout_constraintStart_toStartOf="@+id/SimpleIncomeLabel"
                     app:layout_constraintTop_toBottomOf="@+id/SimpleIncome" />
 
                 <TextView
                     android:id="@+id/TaxIncome"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:text="________"
                     android:textAlignment="center"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="@+id/TaxIncomeLabel"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/TaxIncomeLabel"
+                    app:layout_constraintEnd_toEndOf="@+id/SimpleIncome"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/TaxIncomeLabel"
-                    app:layout_constraintTop_toBottomOf="@+id/TaxIncomeLabel" />
+                    app:layout_constraintStart_toStartOf="@+id/SimpleIncome"
+                    app:layout_constraintTop_toTopOf="@+id/TaxIncomeLabel" />
 
                 <TextView
                     android:id="@+id/SimpleIncomeLabel"
@@ -59,25 +116,25 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="Простая доходность к погашению, %/год."
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/CouponIncome"
+                    android:textAlignment="textStart"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/CurrentIncomeLabel"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/CouponIncome"
+                    app:layout_constraintStart_toStartOf="@+id/CurrentIncomeLabel"
                     app:layout_constraintTop_toBottomOf="@+id/CurrentIncome" />
 
                 <TextView
                     android:id="@+id/SimpleIncome"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
                     android:text="________"
                     android:textAlignment="center"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="@+id/CurrentIncomeLabel"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/SimpleIncomeLabel"
+                    app:layout_constraintEnd_toEndOf="@+id/CurrentIncome"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/CurrentIncomeLabel"
-                    app:layout_constraintTop_toBottomOf="@+id/SimpleIncomeLabel" />
+                    app:layout_constraintStart_toStartOf="@+id/CurrentIncome"
+                    app:layout_constraintTop_toTopOf="@+id/SimpleIncomeLabel" />
 
                 <TextView
                     android:id="@+id/CurrentIncomeLabel"
@@ -85,50 +142,48 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="Текущая доходность, %/год."
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/CouponIncome"
+                    android:textAlignment="textStart"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/CouponIncomeLabel"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/CouponIncome"
+                    app:layout_constraintStart_toStartOf="@+id/CouponIncomeLabel"
                     app:layout_constraintTop_toBottomOf="@+id/CouponIncome" />
 
                 <TextView
                     android:id="@+id/CurrentIncome"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:text="________"
                     android:textAlignment="center"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="@+id/CurrentIncomeLabel"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/CurrentIncomeLabel"
+                    app:layout_constraintEnd_toEndOf="@+id/CouponIncome"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/CurrentIncomeLabel"
-                    app:layout_constraintTop_toBottomOf="@+id/CurrentIncomeLabel" />
+                    app:layout_constraintStart_toStartOf="@+id/CouponIncome"
+                    app:layout_constraintTop_toTopOf="@+id/CurrentIncomeLabel" />
 
                 <TextView
                     android:id="@+id/CouponIncome"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:text="________"
                     android:textAlignment="center"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="@+id/CouponIncomeLabel"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/CouponIncomeLabel"
+                    app:layout_constraintEnd_toEndOf="@+id/DirtyPrice"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/CouponIncomeLabel"
-                    app:layout_constraintTop_toBottomOf="@+id/CouponIncomeLabel" />
+                    app:layout_constraintStart_toStartOf="@+id/DirtyPrice"
+                    app:layout_constraintTop_toTopOf="@+id/CouponIncomeLabel" />
 
                 <TextView
                     android:id="@+id/DirtyPriceLabel"
-                    android:layout_width="350dp"
+                    android:layout_width="250dp"
                     android:layout_height="22dp"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="140dp"
-                    android:layout_marginEnd="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="76dp"
                     android:text="Грязная цена покупки"
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:textAlignment="textStart"
+                    android:textSize="12dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/NKD" />
 
@@ -136,24 +191,24 @@
                     android:id="@+id/DirtyPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="32dp"
                     android:fontFamily="sans-serif"
                     android:text="________"
                     android:textAlignment="center"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="@+id/DirtyPriceLabel"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="@+id/DirtyPriceLabel"
-                    app:layout_constraintTop_toBottomOf="@+id/DirtyPriceLabel" />
+                    app:layout_constraintStart_toEndOf="@+id/DirtyPriceLabel"
+                    app:layout_constraintTop_toTopOf="@+id/DirtyPriceLabel" />
 
                 <EditText
                     android:id="@+id/CleanPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Чистая цена покупки"
                     android:inputType="number|numberDecimal"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/AllPayments"
                     app:layout_constraintStart_toStartOf="@+id/AllPayments"
                     app:layout_constraintTop_toBottomOf="@+id/AllPayments" />
@@ -163,9 +218,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="НКД"
                     android:inputType="number|numberDecimal"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/CleanPrice"
                     app:layout_constraintStart_toStartOf="@+id/CleanPrice"
                     app:layout_constraintTop_toBottomOf="@+id/CleanPrice" />
@@ -175,9 +229,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Количество выплат в год"
                     android:inputType="number|numberDecimal"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/CouponSize"
                     app:layout_constraintStart_toStartOf="@+id/CouponSize"
                     app:layout_constraintTop_toBottomOf="@+id/CouponSize" />
@@ -187,9 +240,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Всего выплат до погашения"
                     android:inputType="number|numberDecimal"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="@+id/PaymentsAtYear"
                     app:layout_constraintStart_toStartOf="@+id/PaymentsAtYear"
                     app:layout_constraintTop_toBottomOf="@+id/PaymentsAtYear" />
@@ -198,15 +250,13 @@
                     android:id="@+id/CouponSize"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="50dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="32dp"
                     android:ems="10"
-                    android:hint="Размер купона (ср.размер купона) р."
                     android:inputType="number|numberDecimal"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
                     app:layout_constraintTop_toBottomOf="@+id/CalculatedSellTime" />
 
                 <EditText
@@ -221,7 +271,7 @@
                     android:hint="Дней до погашения"
                     android:inputType="none"
                     android:textAlignment="center"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/StartDateButton" />
@@ -229,7 +279,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
                     android:layout_width="0dp"
-                    android:layout_height="80dp"
+                    android:layout_height="60dp"
                     android:background="#3E9400"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -243,7 +293,7 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginBottom="8dp"
                         android:fontFamily="sans-serif-black"
-                        android:text="Securities Analizer"
+                        android:text="Расчет облигаций"
                         android:textColor="#232323"
                         android:textSize="24sp"
                         app:autoSizeTextType="uniform"
@@ -256,43 +306,46 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:singleLine="false"
-                    android:text="Дата продажи\n\/погашения:"
-                    android:textAlignment="center"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="@+id/EmitentRating"
-                    app:layout_constraintStart_toStartOf="@+id/EmitentRating"
-                    app:layout_constraintTop_toBottomOf="@+id/NominalPrice" />
-
-                <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginStart="60dp"
+                    android:layout_marginTop="16dp"
                     android:singleLine="true"
                     android:text="Дата покупки :"
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView7"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/NominalPrice" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:singleLine="true"
+                    android:text="Дата продажи\n\/погашения:"
+                    android:textAlignment="center"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/EmitentRating"
+                    app:layout_constraintHorizontal_bias="0.46"
+                    app:layout_constraintStart_toStartOf="@+id/EmitentRating"
                     app:layout_constraintTop_toBottomOf="@+id/NominalPrice" />
 
                 <EditText
                     android:id="@+id/NominalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:ems="10"
                     android:hint="Номинал"
                     android:inputType="number|numberDecimal"
+                    android:textAlignment="center"
                     android:textColorHint="?android:attr/textColorHint"
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="@+id/OrgName"
+                    app:layout_constraintStart_toStartOf="@+id/OrgName"
                     app:layout_constraintTop_toBottomOf="@+id/OrgName" />
 
                 <EditText
@@ -300,30 +353,45 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="35dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
                     android:ems="10"
                     android:hint="Имя организации"
                     android:inputType="text"
                     android:textAlignment="center"
                     android:textColorHint="?android:attr/textColorHint"
-                    android:textSize="19dp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toStartOf="@+id/EmitentRating"
                     app:layout_constraintHorizontal_bias="0.17"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:text="Размер купона (ср.размер купона) р."
+                    android:textAlignment="textStart"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/CouponSize"
+                    app:layout_constraintEnd_toEndOf="@+id/StartDateButton"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/StartDateButton"
+                    app:layout_constraintTop_toTopOf="@+id/CouponSize" />
+
                 <EditText
                     android:id="@+id/EmitentRating"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="32dp"
                     android:ems="10"
                     android:hint="Рейтинг эмитента"
                     android:inputType="text"
                     android:textAlignment="center"
                     android:textColorHint="?android:attr/textColorHint"
-                    android:textSize="19dp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/OrgName"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/OrgName"
@@ -333,15 +401,16 @@
                 <Button
                     android:id="@+id/CalculationsButton"
                     style="@style/Widget.Material3.Button"
-                    android:layout_width="258dp"
+                    android:layout_width="150dp"
                     android:layout_height="60dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="32dp"
                     android:backgroundTint="#4CAF50"
                     android:backgroundTintMode="src_over"
                     android:text="Рассчитать"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/DirtyPriceLabel"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/NKD"
                     app:layout_constraintVertical_bias="0.100000024"
                     app:strokeColor="#000000" />
@@ -352,25 +421,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
                     android:text="Купонная доходность, %/год."
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    app:layout_constraintEnd_toEndOf="@+id/DirtyPrice"
-                    app:layout_constraintStart_toStartOf="@+id/DirtyPrice"
+                    android:textAlignment="textStart"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/DirtyPriceLabel"
+                    app:layout_constraintStart_toStartOf="@+id/DirtyPriceLabel"
                     app:layout_constraintTop_toBottomOf="@+id/DirtyPrice" />
 
                 <Button
                     android:id="@+id/ResetButton"
                     style="@style/Widget.Material3.Button"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="150dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="32dp"
                     android:backgroundTint="#BF4343"
                     android:backgroundTintMode="src_over"
                     android:text="Сброс"
-                    app:layout_constraintBottom_toTopOf="@+id/DirtyPriceLabel"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/CalculationsButton"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/CalculationsButton"
+                    app:layout_constraintTop_toTopOf="@+id/CalculationsButton"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <Button
@@ -378,12 +446,11 @@
                     style="?spinnerStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:backgroundTint="#0E0101"
                     android:text="ДД.ММ.ГГГГ"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="13dp"
                     android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="@+id/OrgName"
                     app:layout_constraintStart_toStartOf="@+id/OrgName"
@@ -400,7 +467,7 @@
                     android:text="ДД.ММ.ГГГГ"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="13dp"
                     android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="@+id/EmitentRating"
                     app:layout_constraintStart_toStartOf="@+id/EmitentRating"

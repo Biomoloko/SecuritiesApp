@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
 
             val cleanPrice = ProjectFunctions.GetParseFloat(bindingClass.CleanPrice.text.toString(), myError)
-            bindingClass.CleanPrice.setText(ProjectFunctions.TextInUpField(cleanPrice))
+            bindingClass.CleanPrice.setText(ProjectFunctions.TextInUpField(cleanPrice)+" %")
 
 
 

@@ -24,7 +24,7 @@ object ProjectFunctions {
 
     //блок формул рассчета
     fun DirtyPriceCalc(cleanPrice : Float, nkd : Float) : Float{
-        return IsNanReturning(cleanPrice + nkd)
+        return IsNanReturning((cleanPrice * 10) + nkd)
     }
 
     fun CouponInkomeCalc(paymentsAtYear : Float, couponSize : Float, nominal : Float) : Float{
@@ -32,7 +32,7 @@ object ProjectFunctions {
     }
 
     fun CurrentIncomeCalc(paymentsAtYear : Float, couponSize : Float, cleanPrice: Float) : Float{
-        return IsNanReturning(((paymentsAtYear*couponSize)/cleanPrice) * 100)
+        return IsNanReturning(((paymentsAtYear*couponSize)/(cleanPrice*10)) * 100)
 
     }
 
